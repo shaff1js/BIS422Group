@@ -1,0 +1,107 @@
+#Drop Statements
+
+Drop table HSHClosingSale;
+drop table HSHProperty;
+Drop table HSHCustomer;
+Drop Table HSHPropertyOwner;
+Drop Table HSHRealEstateAgent;
+Drop table HSHParalegal;
+Drop Table HSHAdminAsst;
+Drop Table HSHEmployee;
+Drop table HSHBranch;
+Drop Table HSHZipCode;
+
+#Table Creation Statements
+Create table HSHZipcode(
+ZipCode int(5) not null,
+City varchar(30) not null,
+State char(2) not null,
+constraint HSHZipCodePk primary key (ZipCode));
+
+Create table HSHBranch(
+BranchID int(6) not null,
+StreetAddress varchar(70) not null,
+ZipCode int(5) not null,
+constraint HSHBranchPK primary key (BranchID),
+constraint HSHBranchFK foreign key (Zipcode) references HSHZipCode(ZipCode));
+
+create table HSHEmployee(
+EmployeeID int(6) not null auto_increment,
+EmployeeFirstName varchar(30) not null,
+EmployeeMI char(1),
+EmployeeLastName varchar(50) not null,
+BranchID int(6),
+EmployeeType char(1) not null,
+EmployeePassword varchar(30) not null,
+constraint HSHEmployeePK primary key (EmployeeID),
+constraint HSHEmployeeFK1 foreign key (BranchID) references HSHBranch(BranchID),
+constraint EmployeeTypeValues check(EmployeeType in ('M', 'A', 'P', 'R')));
+
+create table HSHAdminAsst(
+AdminAsstID int(6) not null,
+OfficeSkills varchar(4000),
+constraint AdminAsstPK primary key (AdminAsstID));
+
+
+
+create table HSHParalegal(
+ParalegalID int(6) not null,
+OfficeSkills varchar(4000),
+constraint ParalegalPK primary key (ParalegalID));
+
+Create table HSHRealEstateAgent(
+RealEstateAgentID int(6) not null,
+RealEstateSoldtoDate int(3),
+TotalSalestoDate int(11),
+constraint RealEstateAgentPK primary key (RealEstateAgentID));
+
+Create Table HSHPropertyOwner(
+OwnerID int(6) not null auto_increment,
+OwnerFirstName varchar(30) not null,
+OwnerMI char(1),
+OwnerLastName varchar(40) not null,
+RealEstateAgentID int(6),
+constraint PropertyOwnerPK primary key (OwnerID),
+constraint PropertyOwnerFK1 foreign key (RealEstateAgentID) references HSHRealEstateAgent(RealEstateAgentID));
+
+Create Table HSHCustomer(
+CustomerID int(6) not null auto_increment,
+CustomerFirstName varchar(30) not null,
+CustomerMI char(1),
+CustomerLastName varchar(40) not null,
+CustomerPhoneNumber varchar(15),
+CustomerWishList varchar(4000),
+constraint CustomerPK primary key (CustomerID));
+
+create table HSHProperty(
+PropertyID int(6) not null auto_increment,
+BranchID int(6) not null,
+OwnerID int(6) not null,
+PropertyStreetAddress varchar(70) not null,
+ZipCode int(5) not null,
+NumberOfBedrooms int(2),
+NumberOfBathrooms int(2),
+TotalSquareFeet int(9),
+YearBuilt int(4),
+AskingPrice int(10),
+Description varchar(4000),
+Sold char(1) not null,
+constraint HSHPropertyPK primary key (PropertyID),
+constraint HSHPropertyFK1 foreign key (BranchID) references HSHBranch(BranchID),
+constraint HSHPropertyFK2 foreign key (OwnerID) references HSHPropertyOwner(OwnerID),
+constraint HSHPropertyFK3 foreign key (Zipcode) references HSHZipCode(ZipCode),
+constraint YearBuiltValues check(YearBuilt>1920),
+constraint SoldValues check(Sold in ('Y','N')));
+
+create table HSHClosingSale(
+SaleID int(6) not null auto_increment,
+PropertyID int(6) not null,
+RealEstateAgentID int(6) not null,
+CustomerID int(6) not null,
+DateSold date,
+SalePice int(10),
+constraint HSHClosingSalePK primary key (SaleID),
+constraint HSHClosingSaleFK1 foreign key (PropertyID) references HSHProperty(PropertyID),
+constraint HSHClosingSaleFK2 foreign key (RealEstateAgentID) references HSHRealEstateAgent(RealEstateAgentID),
+constraint HSHClosingSaleFK3 foreign key (CustomerID) references HSHCustomer(CustomerID),
+constraint SalePriceValues check(SalePrice>1));
