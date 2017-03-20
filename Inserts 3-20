@@ -1,0 +1,56 @@
+/*#inserts for the hshcustomer table
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Jim','P','Scott','989-444-1234','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Erica','A','Hyatt','989-444-5678','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Billie','','Jean','989-867-5309','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Bill','G','Curry','989-311-1634','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Jack','J','Jameson','989-151-1234','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Jose','E','Toro','989-444-1234','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Ivant','D','Svedka','989-444-1234','WishList');
+insert into hshcustomer(CustomerFirstName, CustomerMI, CustomerLastName, CustomerPhoneNumber, CustomerWishList)
+values( 'Ivan','A','Oddar','989-444-1234','WishList');
+
+
+#inserts for the hshproperty table
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100001,1,'444 Birchwood St', 48167,3,2,1200,1996,35000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100001,2,'444 Elmwood St', 48167,2,1,967,2006,30000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100001,3,'444 Cherry St', 48167,4,4,3000,2010,95000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100001,4,'761 Birchwood St', 48167,3,1,1500,1999,42000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100001,5,'888 Disco St', 48167,5,4,12000,1965,1200000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,6,'150 Dennistion Rd', 48801,3,2,1600,1975,43500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,7,'6081 Elm St', 48801,2,1,2000,2007,40000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,8,'1606 Harpring Ave', 48801,7,5,40000,2013,15000000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,9,'1783 Ashton Rd', 48801,2,2,2350,2016,24000,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,10,'1874 Jeramiah Blvd', 48801,4,2,3600,1986,44500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100002,11,'111 Charleston', 48801,2,0,1300,1945,2500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,1,'150 Barkin St', 48858,3,2,4200,1985,43500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,2,'150 Dennistion', 48858,3,2,8600,1972,73500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,3,'150 S Lansing', 48858,4,1,7500,1992,83500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,4,'411 Forrest Ln', 48858,5,3,8600,1991,103500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,5,'489 Main St', 48858,3,2,2700,2000,43500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,6,'150 Pickard Rd', 48858,4,2,8600,2001,63500,'Description','n');
+insert into hshproperty(branchID, ownerid, propertystreetaddress, zipcode, numberofbedrooms, numberofbathrooms, totalsquarefeet, yearbuilt, askingprice, description, sold)
+values(100003,7,'420 University St', 48858,6,3,12600,1986,94500,'Description','n');*/
