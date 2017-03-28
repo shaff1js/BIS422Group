@@ -5,24 +5,15 @@ Public Class Form1
         Me.Close()
     End Sub
 
-    Private DB As New DBAccessClass
-    Private Sub LogInButton_Click(sender As Object, e As EventArgs) Handles LogInButton.Click
+    Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
+        'open the add window
 
+        AddForm.ShowDialog()
+    End Sub
 
-        'log in to the realty portal
-        DB.ExecuteQuery("SELECT EmployeeID, Password FROM HSHEmployee")
+    Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
+        'open the search window
 
-        If DB.Exception <> String.Empty Then
-            MessageBox.Show(DB.Exception)
-            Exit Sub
-        End If
-
-        If UserIDTextBox.Text = "" And PasswordMaskedTextBox.Text = "" Then
-            MessageBox.Show("Success")
-        Else
-            MessageBox.Show("Fail")
-
-        End If
-
+        SearchForm.ShowDialog()
     End Sub
 End Class
