@@ -23,16 +23,13 @@
         DB.AddParam("@NumberOfBedrooms", NumberOfBedroomsComboBox.Text & "%")
         DB.AddParam("@NumberOfBathrooms", NumberOfBathroomsComboBox.Text & "%")
         DB.AddParam("@TotalSquareFeet", SquareFeetMaskedTextBox.Text & "%")
-        If askingPriceMaskedTextBox.Text = "" Then
-            askingPriceMaskedTextBox.Text = 9999999999
-            DB.AddParam("@AskingPrice", askingPriceMaskedTextBox.Text & "%")
-            askingPriceMaskedTextBox.Text = ""
+        If askingPriceMaskedTextBox.text.length = 0 Then
+             DB.ExecuteQuery("SELECT PropertyID, PropertyStreetAddress, ZipCode, AskingPrice, NumberOfBedrooms, NumberOfBathrooms, TotalSquareFeet, YearBuilt FROM HSHProperty WHERE NumberOfBedrooms LIKE ? AND NumberOfBathrooms LIKE ? AND TotalSquareFeet >= ? ORDER BY PropertyID")
         Else
             DB.AddParam("@AskingPrice", askingPriceMaskedTextBox.Text & "%")
-        End If
-
-
+        
         DB.ExecuteQuery("SELECT PropertyID, PropertyStreetAddress, ZipCode, AskingPrice, NumberOfBedrooms, NumberOfBathrooms, TotalSquareFeet, YearBuilt FROM HSHProperty WHERE NumberOfBedrooms LIKE ? AND NumberOfBathrooms LIKE ? AND TotalSquareFeet >= ?  AND AskingPrice <= ? ORDER BY PropertyID")
+            End If
 
         If DB.Exception <> String.Empty Then
             MessageBox.Show(DB.Exception)
