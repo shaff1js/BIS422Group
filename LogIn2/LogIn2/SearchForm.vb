@@ -58,7 +58,8 @@
     End Sub
 
     Private Sub HSHPropertyDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles HSHPropertyDataGridView.CellClick
-
+        Dim SaleIDInteger As Integer
+        Dim SaleIDString As String
         'select the property to sell by clicking on the row in the grid
         Dim PropertyID As Object
         If e.RowIndex > -1 Then
@@ -74,7 +75,16 @@
             Exit Sub
         End If
 
-        SaleIDTextBox.Text = DB.DBDataTable.Rows(0).Item(0) + 1
+        'SaleIDTextBox.Text = DB.DBDataTable.Rows(0).Item(0) + 1
+
+
+        If IsDBNull(DB.DBDataTable.Rows(0).Item(0)) Then
+            SaleIDInteger = 1
+        Else
+            SaleIDInteger = DB.DBDataTable.Rows(0).Item(0) + 1
+        End If
+
+        SaleIDTextBox.Text = SaleIDInteger.ToString()
 
         DateSoldMaskedTextBox.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now)
 
@@ -86,7 +96,7 @@
 
     Private Sub PurchaseButton_Click(sender As Object, e As EventArgs) Handles PurchaseButton.Click
 
-        Dim NewPropertiesSoldInteger, NewTotalTalesInteger As Integer
+
 
         'validate entries
         'still need to figure out how to ensure that customer and real estate values are validated against their respective data bases
@@ -125,28 +135,6 @@
                 Exit Sub
             End If
 
-            'update hshrealestateagent to relect sold status
-            DB.AddParam("@RealEstateAgentID", RealEstateAgentIDMaskedTextBox.Text)
-            DB.ExecuteQuery("SELECT RealEstateSoldtoDate, TotalSalestoDate FROM HSHRealEstateAgent WHERE RealEstateAgentID = ?")
-
-            If Not String.IsNullOrEmpty(DB.Exception) Then
-                MessageBox.Show(DB.Exception)
-                Exit Sub
-            End If
-
-            NewPropertiesSoldInteger = DB.DBDataTable.Rows(0).Item(0) + 1
-            NewTotalTalesInteger = DB.DBDataTable.Rows(0).Item(1) + SalePriceMaskedTextBox.Text
-
-            DB.AddParam("@RealEstateSoldtoDate", NewPropertiesSoldInteger)
-            DB.AddParam("@TotalSalestoDate", NewTotalTalesInteger)
-            DB.AddParam("@RealEstateAgentID", RealEstateAgentIDMaskedTextBox.Text)
-
-            DB.ExecuteQuery("UPDATE HSHRealEstateAgent SET RealEstateSoldtoDate = ?, TotalSalestoDate = ? WHERE RealEstateAgentID = ?")
-
-            If Not String.IsNullOrEmpty(DB.Exception) Then
-                MessageBox.Show(DB.Exception)
-                Exit Sub
-            End If
 
             'clear sales boxes and disable sales buttons
             SaleIDTextBox.Clear()
