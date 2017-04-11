@@ -33,21 +33,25 @@ Partial Class AddForm
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.OwnerIDComboBox = New System.Windows.Forms.ComboBox()
         Me.PropertyTextBox = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.BranchIDComboBox = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ZipCodeComboBox = New System.Windows.Forms.ComboBox()
         Me.StreetAddressTextBox = New System.Windows.Forms.TextBox()
         Me.AskingPriceMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.YearbuildMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.TotalSquareFeetMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.NumberofBathroomsMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.NumberofBedroomsMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
-        Me.ZipcodeMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DescriptionRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.AddPropertyButton = New System.Windows.Forms.Button()
-        Me.OwnerIDComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.CityTextBox = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.StateTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -158,6 +162,14 @@ Partial Class AddForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Administrative"
         '
+        'OwnerIDComboBox
+        '
+        Me.OwnerIDComboBox.FormattingEnabled = True
+        Me.OwnerIDComboBox.Location = New System.Drawing.Point(279, 26)
+        Me.OwnerIDComboBox.Name = "OwnerIDComboBox"
+        Me.OwnerIDComboBox.Size = New System.Drawing.Size(49, 21)
+        Me.OwnerIDComboBox.TabIndex = 7
+        '
         'PropertyTextBox
         '
         Me.PropertyTextBox.Location = New System.Drawing.Point(403, 28)
@@ -185,13 +197,17 @@ Partial Class AddForm
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.StateTextBox)
+        Me.GroupBox2.Controls.Add(Me.Label12)
+        Me.GroupBox2.Controls.Add(Me.CityTextBox)
+        Me.GroupBox2.Controls.Add(Me.Label11)
+        Me.GroupBox2.Controls.Add(Me.ZipCodeComboBox)
         Me.GroupBox2.Controls.Add(Me.StreetAddressTextBox)
         Me.GroupBox2.Controls.Add(Me.AskingPriceMaskedTextBox)
         Me.GroupBox2.Controls.Add(Me.YearbuildMaskedTextBox)
         Me.GroupBox2.Controls.Add(Me.TotalSquareFeetMaskedTextBox)
         Me.GroupBox2.Controls.Add(Me.NumberofBathroomsMaskedTextBox)
         Me.GroupBox2.Controls.Add(Me.NumberofBedroomsMaskedTextBox)
-        Me.GroupBox2.Controls.Add(Me.ZipcodeMaskedTextBox)
         Me.GroupBox2.Controls.Add(Me.GroupBox3)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label3)
@@ -206,6 +222,14 @@ Partial Class AddForm
         Me.GroupBox2.TabIndex = 12
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Property Details"
+        '
+        'ZipCodeComboBox
+        '
+        Me.ZipCodeComboBox.FormattingEnabled = True
+        Me.ZipCodeComboBox.Location = New System.Drawing.Point(82, 71)
+        Me.ZipCodeComboBox.Name = "ZipCodeComboBox"
+        Me.ZipCodeComboBox.Size = New System.Drawing.Size(66, 21)
+        Me.ZipCodeComboBox.TabIndex = 11
         '
         'StreetAddressTextBox
         '
@@ -254,14 +278,6 @@ Partial Class AddForm
         Me.NumberofBedroomsMaskedTextBox.Size = New System.Drawing.Size(26, 20)
         Me.NumberofBedroomsMaskedTextBox.TabIndex = 3
         '
-        'ZipcodeMaskedTextBox
-        '
-        Me.ZipcodeMaskedTextBox.Location = New System.Drawing.Point(82, 72)
-        Me.ZipcodeMaskedTextBox.Mask = "00000"
-        Me.ZipcodeMaskedTextBox.Name = "ZipcodeMaskedTextBox"
-        Me.ZipcodeMaskedTextBox.Size = New System.Drawing.Size(40, 20)
-        Me.ZipcodeMaskedTextBox.TabIndex = 2
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.DescriptionRichTextBox)
@@ -289,13 +305,39 @@ Partial Class AddForm
         Me.AddPropertyButton.Text = "Add Property"
         Me.AddPropertyButton.UseVisualStyleBackColor = True
         '
-        'OwnerIDComboBox
+        'Label11
         '
-        Me.OwnerIDComboBox.FormattingEnabled = True
-        Me.OwnerIDComboBox.Location = New System.Drawing.Point(279, 26)
-        Me.OwnerIDComboBox.Name = "OwnerIDComboBox"
-        Me.OwnerIDComboBox.Size = New System.Drawing.Size(49, 21)
-        Me.OwnerIDComboBox.TabIndex = 7
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(154, 74)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(27, 13)
+        Me.Label11.TabIndex = 12
+        Me.Label11.Text = "City:"
+        '
+        'CityTextBox
+        '
+        Me.CityTextBox.Location = New System.Drawing.Point(188, 72)
+        Me.CityTextBox.Name = "CityTextBox"
+        Me.CityTextBox.ReadOnly = True
+        Me.CityTextBox.Size = New System.Drawing.Size(153, 20)
+        Me.CityTextBox.TabIndex = 13
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(348, 74)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(35, 13)
+        Me.Label12.TabIndex = 14
+        Me.Label12.Text = "State:"
+        '
+        'StateTextBox
+        '
+        Me.StateTextBox.Location = New System.Drawing.Point(389, 72)
+        Me.StateTextBox.Name = "StateTextBox"
+        Me.StateTextBox.ReadOnly = True
+        Me.StateTextBox.Size = New System.Drawing.Size(30, 20)
+        Me.StateTextBox.TabIndex = 15
         '
         'AddForm
         '
@@ -339,8 +381,12 @@ Partial Class AddForm
     Friend WithEvents TotalSquareFeetMaskedTextBox As MaskedTextBox
     Friend WithEvents NumberofBathroomsMaskedTextBox As MaskedTextBox
     Friend WithEvents NumberofBedroomsMaskedTextBox As MaskedTextBox
-    Friend WithEvents ZipcodeMaskedTextBox As MaskedTextBox
     Friend WithEvents PropertyTextBox As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents OwnerIDComboBox As ComboBox
+    Friend WithEvents ZipCodeComboBox As ComboBox
+    Friend WithEvents StateTextBox As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents CityTextBox As TextBox
+    Friend WithEvents Label11 As Label
 End Class

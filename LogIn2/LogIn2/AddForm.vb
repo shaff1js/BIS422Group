@@ -8,8 +8,9 @@
     Private DB As New DBAccessClass
 
     Private Sub AddForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim IterationInteger, BranchIDInteger, BranchIDCountInteger, MaxOwnerIDInteger, MinOwnerIDInteger As Integer
+        Dim IterationInteger, BranchIDInteger, BranchIDCountInteger, ZipcodeCountInteger, ZipcodeInteger, MaxOwnerIDInteger, MinOwnerIDInteger As Integer
 
+        'fill branch id dropdown
         DB.ExecuteQuery("SELECT Count(BranchID) as BranchCount FROM HSHBranch")
 
         If Not String.IsNullOrEmpty(DB.Exception) Then
@@ -69,8 +70,49 @@
         End If
 
         PropertyTextBox.Text = DB.DBDataTable.Rows(0).Item(0) + 1
+
+        'fill zipcode combobox
+        DB.ExecuteQuery("SELECT Count(Zipcode) as ZipcodeCount FROM HSHZipcode")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        ZipcodeCountInteger = DB.DBDataTable.Rows(0).Item(0)
+
+        DB.ExecuteQuery("SELECT Zipcode FROM HSHZipcode")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        IterationInteger = 0
+
+        Do
+            ZipcodeInteger = DB.DBDataTable.Rows(IterationInteger).Item(0)
+            ZipCodeComboBox.Items.Add(ZipcodeInteger)
+            IterationInteger = IterationInteger + 1
+
+        Loop Until IterationInteger = ZipcodeCountInteger
     End Sub
 
+    Private Sub ZipcodeSelect_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ZipCodeComboBox.TextChanged
+
+        DB.AddParam("@Zipcode", ZipCodeComboBox.Text & "%")
+
+        DB.ExecuteQuery("Select City, State FROM HSHZipcode WHERE Zipcode LIKE ?")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        CityTextBox.Text = DB.DBDataTable.Rows(0).Item(0)
+        StateTextBox.Text = DB.DBDataTable.Rows(0).Item(1)
+
+    End Sub
     Private Sub AddPropertyButton_Click(sender As Object, e As EventArgs) Handles AddPropertyButton.Click
 
         If BranchIDComboBox.Text = "" Then
@@ -79,7 +121,7 @@
             MessageBox.Show("Please enter the Owner ID.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf StreetAddressTextBox.Text = "" Then
             MessageBox.Show("Please enter the Street Address.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf ZipcodeMaskedTextBox.Text = "" Then
+        ElseIf Zipcodecombobox.Text = "" Then
             MessageBox.Show("Please enter the Zipcode.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf NumberofBedroomsMaskedTextBox.Text = "" Then
             MessageBox.Show("Please enter the Number of Bedrooms.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -98,7 +140,7 @@
             DB.AddParam("@BranchID", BranchIDComboBox.Text)
             DB.AddParam("@OwnerID", OwnerIDComboBox.Text)
             DB.AddParam("@PropertyStreetAddress", StreetAddressTextBox.Text)
-            DB.AddParam("@Zipcode", ZipcodeMaskedTextBox.Text)
+            DB.AddParam("@Zipcode", ZipCodeComboBox.Text)
             DB.AddParam("@NumberOfBedrooms", NumberofBedroomsMaskedTextBox.Text)
             DB.AddParam("@NumberOfBathrooms", NumberofBathroomsMaskedTextBox.Text)
             DB.AddParam("@TotalSquareFeet", TotalSquareFeetMaskedTextBox.Text)
@@ -128,7 +170,7 @@
         BranchIDComboBox.SelectedIndex = -1
         OwnerIDComboBox.SelectedIndex = -1
         StreetAddressTextBox.Text = ""
-        ZipcodeMaskedTextBox.Text = ""
+        ZipCodeComboBox.SelectedIndex = -1
         NumberofBedroomsMaskedTextBox.Text = ""
         NumberofBathroomsMaskedTextBox.Text = ""
         TotalSquareFeetMaskedTextBox.Text = ""
