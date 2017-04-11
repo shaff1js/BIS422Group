@@ -58,8 +58,7 @@
     End Sub
 
     Private Sub HSHPropertyDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles HSHPropertyDataGridView.CellClick
-        Dim SaleIDInteger As Integer
-        Dim SaleIDString As String
+        Dim SaleIDInteger, MaxCustomerIDInteger, CustomerIDInteger, MaxRealEstateAgentIDInteger, RealEstateAgentIDInteger As Integer
         'select the property to sell by clicking on the row in the grid
         Dim PropertyID As Object
         If e.RowIndex > -1 Then
@@ -88,9 +87,55 @@
 
         DateSoldMaskedTextBox.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now)
 
+        'fill the customer dropdown
+        CustomerIDInteger = 1
+
+        DB.ExecuteQuery("SELECT Max(CustomerID) as MaxCustomerID FROM HSHCustomer")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        MaxCustomerIDInteger = DB.DBDataTable.Rows(0).Item(0)
+
+        Do
+            CustomerIDComboBox.Items.Add(CustomerIDInteger)
+            CustomerIDInteger = CustomerIDInteger + 1
+        Loop Until CustomerIDInteger > MaxCustomerIDInteger
+
+        'fill the real estate agent id dropdown
+        DB.ExecuteQuery("SELECT Min(RealEstateAgentID) as MinRealEstateAgentID FROM HSHRealEstateAgent")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+        RealEstateAgentIDInteger = DB.DBDataTable.Rows(0).Item(0)
+
+        DB.ExecuteQuery("SELECT Max(RealEstateAgentID) as MaxRealEstateAgentID FROM HSHRealEstateAgent")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        MaxRealEstateAgentIDInteger = DB.DBDataTable.Rows(0).Item(0)
+
+
+
+        Do
+            RealEstateAgentIDComboBox.Items.Add(RealEstateAgentIDInteger)
+            RealEstateAgentIDInteger = RealEstateAgentIDInteger + 1
+        Loop Until RealEstateAgentIDInteger > MaxRealEstateAgentIDInteger
+
         'enable the sales buttons
         PurchaseButton.Enabled = True
         ClearPurchaseButton.Enabled = True
+        CustomerIDComboBox.Enabled = True
+        RealEstateAgentIDComboBox.Enabled = True
+
+
 
     End Sub
 
@@ -100,20 +145,20 @@
 
         'validate entries
         'still need to figure out how to ensure that customer and real estate values are validated against their respective data bases
-        If CustomerIDMaskedTextBox.Text = "" Then
+        If CustomerIDComboBox.Text = "" Then
             MessageBox.Show("Please enter the Customer ID", "Missing Sales Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            CustomerIDMaskedTextBox.Focus()
-        ElseIf RealEstateAgentIDMaskedTextBox.Text = "" Then
+            CustomerIDComboBox.Focus()
+        ElseIf RealEstateAgentIDComboBox.Text = "" Then
             MessageBox.Show("Please enter the Real Estate Agent ID", "Missing Sales Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            RealEstateAgentIDMaskedTextBox.Focus()
+            RealEstateAgentIDComboBox.Focus()
         ElseIf SalePriceMaskedTextBox.Text = "" Then
             MessageBox.Show("Please enter the Sale Price", "Missing Sales Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
             SalePriceMaskedTextBox.Focus()
         Else
             DB.AddParam("@SaleID", SaleIDTextBox.Text)
             DB.AddParam("@PropertyID", PropertyIDTextBox.Text)
-            DB.AddParam("@RealEstateAgentID", RealEstateAgentIDMaskedTextBox.Text)
-            DB.AddParam("@CustomerID", CustomerIDMaskedTextBox.Text)
+            DB.AddParam("@RealEstateAgentID", RealEstateAgentIDComboBox.Text)
+            DB.AddParam("@CustomerID", CustomerIDComboBox.Text)
             DB.AddParam("@DateSold", DateSoldMaskedTextBox.Text)
             DB.AddParam("@SalePrice", SalePriceMaskedTextBox.Text)
 
@@ -139,13 +184,18 @@
             'clear sales boxes and disable sales buttons
             SaleIDTextBox.Clear()
             PropertyIDTextBox.Clear()
-            RealEstateAgentIDMaskedTextBox.Clear()
-            CustomerIDMaskedTextBox.Clear()
+            ' RealEstateAgentIDMaskedTextBox.Clear()
+            'CustomerIDMaskedTextBox.Clear()
             DateSoldMaskedTextBox.Clear()
             SalePriceMaskedTextBox.Clear()
+            CustomerIDComboBox.SelectedIndex = -1
+            RealEstateAgentIDComboBox.SelectedIndex = -1
+
 
             PurchaseButton.Enabled = False
             ClearPurchaseButton.Enabled = False
+            RealEstateAgentIDComboBox.Enabled = False
+            CustomerIDComboBox.Enabled = False
 
             'reload table
             DB.ExecuteQuery("SELECT PropertyID, PropertyStreetAddress, ZipCode, AskingPrice, NumberOfBedrooms, NumberOfBathrooms, TotalSquareFeet, YearBuilt FROM HSHProperty WHERE Sold = 'n' ORDER BY PropertyID")
@@ -165,13 +215,18 @@
         'clear the purchase area and disable the purchase buttons
         SaleIDTextBox.Clear()
         PropertyIDTextBox.Clear()
-        RealEstateAgentIDMaskedTextBox.Clear()
-        CustomerIDMaskedTextBox.Clear()
+        ' RealEstateAgentIDMaskedTextBox.Clear()
+        'CustomerIDMaskedTextBox.Clear()
         DateSoldMaskedTextBox.Clear()
         SalePriceMaskedTextBox.Clear()
+        CustomerIDComboBox.SelectedIndex = -1
+        RealEstateAgentIDComboBox.SelectedIndex = -1
 
         PurchaseButton.Enabled = False
         ClearPurchaseButton.Enabled = False
+        RealEstateAgentIDComboBox.Enabled = False
+        CustomerIDComboBox.Enabled = False
+
 
     End Sub
 End Class

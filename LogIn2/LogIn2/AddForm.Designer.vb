@@ -35,7 +35,6 @@ Partial Class AddForm
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.PropertyTextBox = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.OwnerIDMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.BranchIDComboBox = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.StreetAddressTextBox = New System.Windows.Forms.TextBox()
@@ -48,6 +47,7 @@ Partial Class AddForm
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.DescriptionRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.AddPropertyButton = New System.Windows.Forms.Button()
+        Me.OwnerIDComboBox = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -145,9 +145,9 @@ Partial Class AddForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.OwnerIDComboBox)
         Me.GroupBox1.Controls.Add(Me.PropertyTextBox)
         Me.GroupBox1.Controls.Add(Me.Label10)
-        Me.GroupBox1.Controls.Add(Me.OwnerIDMaskedTextBox)
         Me.GroupBox1.Controls.Add(Me.BranchIDComboBox)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -175,18 +175,9 @@ Partial Class AddForm
         Me.Label10.TabIndex = 5
         Me.Label10.Text = "Property ID:"
         '
-        'OwnerIDMaskedTextBox
-        '
-        Me.OwnerIDMaskedTextBox.Location = New System.Drawing.Point(278, 27)
-        Me.OwnerIDMaskedTextBox.Mask = "000000"
-        Me.OwnerIDMaskedTextBox.Name = "OwnerIDMaskedTextBox"
-        Me.OwnerIDMaskedTextBox.Size = New System.Drawing.Size(47, 20)
-        Me.OwnerIDMaskedTextBox.TabIndex = 4
-        '
         'BranchIDComboBox
         '
         Me.BranchIDComboBox.FormattingEnabled = True
-        Me.BranchIDComboBox.Items.AddRange(New Object() {"100001", "100002", "100003"})
         Me.BranchIDComboBox.Location = New System.Drawing.Point(96, 27)
         Me.BranchIDComboBox.Name = "BranchIDComboBox"
         Me.BranchIDComboBox.Size = New System.Drawing.Size(114, 21)
@@ -298,6 +289,14 @@ Partial Class AddForm
         Me.AddPropertyButton.Text = "Add Property"
         Me.AddPropertyButton.UseVisualStyleBackColor = True
         '
+        'OwnerIDComboBox
+        '
+        Me.OwnerIDComboBox.FormattingEnabled = True
+        Me.OwnerIDComboBox.Location = New System.Drawing.Point(279, 26)
+        Me.OwnerIDComboBox.Name = "OwnerIDComboBox"
+        Me.OwnerIDComboBox.Size = New System.Drawing.Size(49, 21)
+        Me.OwnerIDComboBox.TabIndex = 7
+        '
         'AddForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -334,7 +333,6 @@ Partial Class AddForm
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents DescriptionRichTextBox As RichTextBox
     Friend WithEvents AddPropertyButton As Button
-    Friend WithEvents OwnerIDMaskedTextBox As MaskedTextBox
     Friend WithEvents StreetAddressTextBox As TextBox
     Friend WithEvents AskingPriceMaskedTextBox As MaskedTextBox
     Friend WithEvents YearbuildMaskedTextBox As MaskedTextBox
@@ -344,4 +342,5 @@ Partial Class AddForm
     Friend WithEvents ZipcodeMaskedTextBox As MaskedTextBox
     Friend WithEvents PropertyTextBox As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents OwnerIDComboBox As ComboBox
 End Class

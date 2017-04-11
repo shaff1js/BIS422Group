@@ -8,6 +8,59 @@
     Private DB As New DBAccessClass
 
     Private Sub AddForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim IterationInteger, BranchIDInteger, BranchIDCountInteger, MaxOwnerIDInteger, MinOwnerIDInteger As Integer
+
+        DB.ExecuteQuery("SELECT Count(BranchID) as BranchCount FROM HSHBranch")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        BranchIDCountInteger = DB.DBDataTable.Rows(0).Item(0)
+
+        DB.ExecuteQuery("SELECT BranchID FROM HSHBranch")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        IterationInteger = 0
+
+        Do
+            BranchIDInteger = DB.DBDataTable.Rows(IterationInteger).Item(0)
+            BranchIDComboBox.Items.Add(BranchIDInteger)
+            IterationInteger = IterationInteger + 1
+
+        Loop Until IterationInteger = BranchIDCountInteger
+
+        'fill owner id dropdown
+        DB.ExecuteQuery("SELECT Min(OwnerID) as MinOwnerID FROM HSHPropertyOwner")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+        MinOwnerIDInteger = DB.DBDataTable.Rows(0).Item(0)
+
+        DB.ExecuteQuery("SELECT Max(OwnerID) as MaxOwnerID FROM HSHPropertyOwner")
+
+        If Not String.IsNullOrEmpty(DB.Exception) Then
+            MessageBox.Show(DB.Exception)
+            Exit Sub
+        End If
+
+        MaxOwnerIDInteger = DB.DBDataTable.Rows(0).Item(0)
+
+
+
+        Do
+            OwnerIDComboBox.Items.Add(MinOwnerIDInteger)
+            MinOwnerIDInteger = MinOwnerIDInteger + 1
+        Loop Until MinOwnerIDInteger > MaxOwnerIDInteger
+
+        'set the property ID textbox
         DB.ExecuteQuery("SELECT MAX(PropertyID) as MaxProperty FROM HSHProperty")
 
         If Not String.IsNullOrEmpty(DB.Exception) Then
@@ -22,7 +75,7 @@
 
         If BranchIDComboBox.Text = "" Then
             MessageBox.Show("Please enter a Branch ID.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        ElseIf OwnerIDMaskedTextBox.Text = "" Then
+        ElseIf OwnerIDcombobox.Text = "" Then
             MessageBox.Show("Please enter the Owner ID.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf StreetAddressTextBox.Text = "" Then
             MessageBox.Show("Please enter the Street Address.", "Missing Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -43,7 +96,7 @@
         Else
             DB.AddParam("@PropertyID", PropertyTextBox.Text)
             DB.AddParam("@BranchID", BranchIDComboBox.Text)
-            DB.AddParam("@OwnerID", OwnerIDMaskedTextBox.Text)
+            DB.AddParam("@OwnerID", OwnerIDComboBox.Text)
             DB.AddParam("@PropertyStreetAddress", StreetAddressTextBox.Text)
             DB.AddParam("@Zipcode", ZipcodeMaskedTextBox.Text)
             DB.AddParam("@NumberOfBedrooms", NumberofBedroomsMaskedTextBox.Text)
@@ -73,7 +126,7 @@
         PropertyTextBox.Text = DB.DBDataTable.Rows(0).Item(0) + 1
 
         BranchIDComboBox.SelectedIndex = -1
-        OwnerIDMaskedTextBox.Text = ""
+        OwnerIDComboBox.SelectedIndex = -1
         StreetAddressTextBox.Text = ""
         ZipcodeMaskedTextBox.Text = ""
         NumberofBedroomsMaskedTextBox.Text = ""
@@ -83,7 +136,7 @@
         AskingPriceMaskedTextBox.Text = ""
         DescriptionRichTextBox.Text = ""
 
-        OwnerIDMaskedTextBox.Focus()
+        BranchIDComboBox.Focus()
 
     End Sub
 End Class

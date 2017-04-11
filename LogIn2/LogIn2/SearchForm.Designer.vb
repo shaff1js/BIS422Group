@@ -40,8 +40,6 @@ Partial Class SearchForm
         Me.PurchaseButton = New System.Windows.Forms.Button()
         Me.DateSoldMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.SalePriceMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
-        Me.RealEstateAgentIDMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
-        Me.CustomerIDMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.PropertyIDTextBox = New System.Windows.Forms.TextBox()
         Me.SaleIDTextBox = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -50,6 +48,8 @@ Partial Class SearchForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.CustomerIDComboBox = New System.Windows.Forms.ComboBox()
+        Me.RealEstateAgentIDComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.HSHPropertyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -181,12 +181,12 @@ Partial Class SearchForm
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.RealEstateAgentIDComboBox)
+        Me.GroupBox3.Controls.Add(Me.CustomerIDComboBox)
         Me.GroupBox3.Controls.Add(Me.ClearPurchaseButton)
         Me.GroupBox3.Controls.Add(Me.PurchaseButton)
         Me.GroupBox3.Controls.Add(Me.DateSoldMaskedTextBox)
         Me.GroupBox3.Controls.Add(Me.SalePriceMaskedTextBox)
-        Me.GroupBox3.Controls.Add(Me.RealEstateAgentIDMaskedTextBox)
-        Me.GroupBox3.Controls.Add(Me.CustomerIDMaskedTextBox)
         Me.GroupBox3.Controls.Add(Me.PropertyIDTextBox)
         Me.GroupBox3.Controls.Add(Me.SaleIDTextBox)
         Me.GroupBox3.Controls.Add(Me.Label10)
@@ -237,22 +237,6 @@ Partial Class SearchForm
         Me.SalePriceMaskedTextBox.Name = "SalePriceMaskedTextBox"
         Me.SalePriceMaskedTextBox.Size = New System.Drawing.Size(100, 20)
         Me.SalePriceMaskedTextBox.TabIndex = 14
-        '
-        'RealEstateAgentIDMaskedTextBox
-        '
-        Me.RealEstateAgentIDMaskedTextBox.Location = New System.Drawing.Point(214, 90)
-        Me.RealEstateAgentIDMaskedTextBox.Mask = "000000"
-        Me.RealEstateAgentIDMaskedTextBox.Name = "RealEstateAgentIDMaskedTextBox"
-        Me.RealEstateAgentIDMaskedTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.RealEstateAgentIDMaskedTextBox.TabIndex = 13
-        '
-        'CustomerIDMaskedTextBox
-        '
-        Me.CustomerIDMaskedTextBox.Location = New System.Drawing.Point(214, 66)
-        Me.CustomerIDMaskedTextBox.Mask = "000000"
-        Me.CustomerIDMaskedTextBox.Name = "CustomerIDMaskedTextBox"
-        Me.CustomerIDMaskedTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.CustomerIDMaskedTextBox.TabIndex = 12
         '
         'PropertyIDTextBox
         '
@@ -324,6 +308,24 @@ Partial Class SearchForm
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Date Sold:"
         '
+        'CustomerIDComboBox
+        '
+        Me.CustomerIDComboBox.Enabled = False
+        Me.CustomerIDComboBox.FormattingEnabled = True
+        Me.CustomerIDComboBox.Location = New System.Drawing.Point(214, 65)
+        Me.CustomerIDComboBox.Name = "CustomerIDComboBox"
+        Me.CustomerIDComboBox.Size = New System.Drawing.Size(100, 21)
+        Me.CustomerIDComboBox.TabIndex = 18
+        '
+        'RealEstateAgentIDComboBox
+        '
+        Me.RealEstateAgentIDComboBox.Enabled = False
+        Me.RealEstateAgentIDComboBox.FormattingEnabled = True
+        Me.RealEstateAgentIDComboBox.Location = New System.Drawing.Point(214, 90)
+        Me.RealEstateAgentIDComboBox.Name = "RealEstateAgentIDComboBox"
+        Me.RealEstateAgentIDComboBox.Size = New System.Drawing.Size(100, 21)
+        Me.RealEstateAgentIDComboBox.TabIndex = 18
+        '
         'SearchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,8 +364,6 @@ Partial Class SearchForm
     Friend WithEvents PurchaseButton As Button
     Friend WithEvents DateSoldMaskedTextBox As MaskedTextBox
     Friend WithEvents SalePriceMaskedTextBox As MaskedTextBox
-    Friend WithEvents RealEstateAgentIDMaskedTextBox As MaskedTextBox
-    Friend WithEvents CustomerIDMaskedTextBox As MaskedTextBox
     Friend WithEvents PropertyIDTextBox As TextBox
     Friend WithEvents SaleIDTextBox As TextBox
     Friend WithEvents Label10 As Label
@@ -372,4 +372,6 @@ Partial Class SearchForm
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents RealEstateAgentIDComboBox As ComboBox
+    Friend WithEvents CustomerIDComboBox As ComboBox
 End Class
