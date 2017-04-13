@@ -1,7 +1,7 @@
 ﻿Imports System.Data.Odbc
 Public Class DBAccessClass
     Public DBCommand As OdbcCommand
-    Public Const ConnectStr As String = "Driver={MySQL ODBC 5.3 ANSI Driver};SERVER=141.209.241.44;DATABASE=BIS422_33;USER=detroit;PASSWORD=mypass;OPTION=3"
+    Public Const ConnectStr As String = "Driver={MySQL ODBC 5.3 ANSI Driver};SERVER=;DATABASE=;USER=;PASSWORD=;OPTION=3"
     Public DBConnection As New OdbcConnection(ConnectStr)
     Public DBDataAdapter As OdbcDataAdapter
     Public DBDataTable As DataTable

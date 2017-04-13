@@ -73,12 +73,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForm.Designer.vb">
-      <DependentUpon>AddForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DBAccess.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -111,9 +105,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddForm.resx">
-      <DependentUpon>AddForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
