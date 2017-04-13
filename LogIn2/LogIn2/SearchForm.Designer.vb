@@ -36,6 +36,8 @@ Partial Class SearchForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RealEstateAgentIDComboBox = New System.Windows.Forms.ComboBox()
+        Me.CustomerIDComboBox = New System.Windows.Forms.ComboBox()
         Me.ClearPurchaseButton = New System.Windows.Forms.Button()
         Me.PurchaseButton = New System.Windows.Forms.Button()
         Me.DateSoldMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
@@ -48,8 +50,6 @@ Partial Class SearchForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.CustomerIDComboBox = New System.Windows.Forms.ComboBox()
-        Me.RealEstateAgentIDComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.HSHPropertyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -202,6 +202,24 @@ Partial Class SearchForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Sales Detail"
         '
+        'RealEstateAgentIDComboBox
+        '
+        Me.RealEstateAgentIDComboBox.Enabled = False
+        Me.RealEstateAgentIDComboBox.FormattingEnabled = True
+        Me.RealEstateAgentIDComboBox.Location = New System.Drawing.Point(214, 90)
+        Me.RealEstateAgentIDComboBox.Name = "RealEstateAgentIDComboBox"
+        Me.RealEstateAgentIDComboBox.Size = New System.Drawing.Size(100, 21)
+        Me.RealEstateAgentIDComboBox.TabIndex = 18
+        '
+        'CustomerIDComboBox
+        '
+        Me.CustomerIDComboBox.Enabled = False
+        Me.CustomerIDComboBox.FormattingEnabled = True
+        Me.CustomerIDComboBox.Location = New System.Drawing.Point(214, 65)
+        Me.CustomerIDComboBox.Name = "CustomerIDComboBox"
+        Me.CustomerIDComboBox.Size = New System.Drawing.Size(100, 21)
+        Me.CustomerIDComboBox.TabIndex = 18
+        '
         'ClearPurchaseButton
         '
         Me.ClearPurchaseButton.Location = New System.Drawing.Point(424, 90)
@@ -308,24 +326,6 @@ Partial Class SearchForm
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Date Sold:"
         '
-        'CustomerIDComboBox
-        '
-        Me.CustomerIDComboBox.Enabled = False
-        Me.CustomerIDComboBox.FormattingEnabled = True
-        Me.CustomerIDComboBox.Location = New System.Drawing.Point(214, 65)
-        Me.CustomerIDComboBox.Name = "CustomerIDComboBox"
-        Me.CustomerIDComboBox.Size = New System.Drawing.Size(100, 21)
-        Me.CustomerIDComboBox.TabIndex = 18
-        '
-        'RealEstateAgentIDComboBox
-        '
-        Me.RealEstateAgentIDComboBox.Enabled = False
-        Me.RealEstateAgentIDComboBox.FormattingEnabled = True
-        Me.RealEstateAgentIDComboBox.Location = New System.Drawing.Point(214, 90)
-        Me.RealEstateAgentIDComboBox.Name = "RealEstateAgentIDComboBox"
-        Me.RealEstateAgentIDComboBox.Size = New System.Drawing.Size(100, 21)
-        Me.RealEstateAgentIDComboBox.TabIndex = 18
-        '
         'SearchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -336,7 +336,7 @@ Partial Class SearchForm
         Me.Controls.Add(Me.HSHPropertyDataGridView)
         Me.Controls.Add(Me.BackButton)
         Me.Name = "SearchForm"
-        Me.Text = "SearchForm"
+        Me.Text = "Search for Property"
         CType(Me.HSHPropertyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

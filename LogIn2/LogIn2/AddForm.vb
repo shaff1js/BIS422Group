@@ -29,15 +29,15 @@
 
         IterationInteger = 0
 
-        Do
+        Do While IterationInteger < BranchIDCountInteger
             BranchIDInteger = DB.DBDataTable.Rows(IterationInteger).Item(0)
             BranchIDComboBox.Items.Add(BranchIDInteger)
             IterationInteger = IterationInteger + 1
 
-        Loop Until IterationInteger = BranchIDCountInteger
+        Loop
 
         'fill owner id dropdown
-        DB.ExecuteQuery("SELECT Min(OwnerID) as MinOwnerID FROM HSHPropertyOwner")
+        DB.ExecuteQuery("select min(ownerid) as minownerid from hshpropertyowner")
 
         If Not String.IsNullOrEmpty(DB.Exception) Then
             MessageBox.Show(DB.Exception)
@@ -45,7 +45,7 @@
         End If
         MinOwnerIDInteger = DB.DBDataTable.Rows(0).Item(0)
 
-        DB.ExecuteQuery("SELECT Max(OwnerID) as MaxOwnerID FROM HSHPropertyOwner")
+        DB.ExecuteQuery("select max(ownerid) as maxownerid from hshpropertyowner")
 
         If Not String.IsNullOrEmpty(DB.Exception) Then
             MessageBox.Show(DB.Exception)
@@ -56,10 +56,10 @@
 
 
 
-        Do
+        Do While MinOwnerIDInteger <= MaxOwnerIDInteger
             OwnerIDComboBox.Items.Add(MinOwnerIDInteger)
             MinOwnerIDInteger = MinOwnerIDInteger + 1
-        Loop Until MinOwnerIDInteger > MaxOwnerIDInteger
+        Loop
 
         'set the property ID textbox
         DB.ExecuteQuery("SELECT MAX(PropertyID) as MaxProperty FROM HSHProperty")
