@@ -64,6 +64,7 @@
             DB.AddParam("@Description", DescriptionTextBox.Text)
 
             DB.ExecuteQuery("InsertKeyMode Into item values(?,?,?,?,?,?,?,?,?,?,?,?)")
+            'austin try using this query instead "INSERT INTO HSHProperty VALUES(?,?,?,?,?,?,?,?,?,?,?,?)" - Jon
             If Not String.IsNullOrEmpty(DB.Exception) Then
                 MessageBox.Show(DB.Exception)
                 Exit Sub
