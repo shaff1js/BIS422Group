@@ -8,7 +8,7 @@ Public Class Form1
     Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
         'open the add window
 
-        'AddForm.ShowDialog()
+        Form2.ShowDialog()
     End Sub
 
     Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
