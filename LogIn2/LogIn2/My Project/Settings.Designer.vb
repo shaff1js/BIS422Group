@@ -53,6 +53,17 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=141.209.241.44;user id=detroit;password=mypass;database=BIS422_33;persists"& _ 
+            "ecurityinfo=True")>  _
+        Public ReadOnly Property BIS422_33ConnectionString() As String
+            Get
+                Return CType(Me("BIS422_33ConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
