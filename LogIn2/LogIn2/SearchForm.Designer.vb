@@ -22,6 +22,7 @@ Partial Class SearchForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BackButton = New System.Windows.Forms.Button()
         Me.HSHPropertyDataGridView = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -49,9 +50,17 @@ Partial Class SearchForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.BIS422_33DataSet = New LogIn2.BIS422_33DataSet()
+        Me.HshcustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HshcustomerTableAdapter = New LogIn2.BIS422_33DataSetTableAdapters.hshcustomerTableAdapter()
+        Me.HshrealestateagentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HshrealestateagentTableAdapter = New LogIn2.BIS422_33DataSetTableAdapters.hshrealestateagentTableAdapter()
         CType(Me.HSHPropertyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.BIS422_33DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HshcustomerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HshrealestateagentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BackButton
@@ -202,6 +211,8 @@ Partial Class SearchForm
         '
         'RealEstateAgentIDComboBox
         '
+        Me.RealEstateAgentIDComboBox.DataSource = Me.HshrealestateagentBindingSource
+        Me.RealEstateAgentIDComboBox.DisplayMember = "RealEstateAgentID"
         Me.RealEstateAgentIDComboBox.Enabled = False
         Me.RealEstateAgentIDComboBox.FormattingEnabled = True
         Me.RealEstateAgentIDComboBox.Location = New System.Drawing.Point(214, 90)
@@ -211,6 +222,8 @@ Partial Class SearchForm
         '
         'CustomerIDComboBox
         '
+        Me.CustomerIDComboBox.DataSource = Me.HshcustomerBindingSource
+        Me.CustomerIDComboBox.DisplayMember = "CustomerID"
         Me.CustomerIDComboBox.Enabled = False
         Me.CustomerIDComboBox.FormattingEnabled = True
         Me.CustomerIDComboBox.Location = New System.Drawing.Point(214, 65)
@@ -315,6 +328,29 @@ Partial Class SearchForm
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Date Sold:"
         '
+        'BIS422_33DataSet
+        '
+        Me.BIS422_33DataSet.DataSetName = "BIS422_33DataSet"
+        Me.BIS422_33DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'HshcustomerBindingSource
+        '
+        Me.HshcustomerBindingSource.DataMember = "hshcustomer"
+        Me.HshcustomerBindingSource.DataSource = Me.BIS422_33DataSet
+        '
+        'HshcustomerTableAdapter
+        '
+        Me.HshcustomerTableAdapter.ClearBeforeFill = True
+        '
+        'HshrealestateagentBindingSource
+        '
+        Me.HshrealestateagentBindingSource.DataMember = "hshrealestateagent"
+        Me.HshrealestateagentBindingSource.DataSource = Me.BIS422_33DataSet
+        '
+        'HshrealestateagentTableAdapter
+        '
+        Me.HshrealestateagentTableAdapter.ClearBeforeFill = True
+        '
         'SearchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -331,6 +367,9 @@ Partial Class SearchForm
         Me.GroupBox1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.BIS422_33DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HshcustomerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HshrealestateagentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -362,4 +401,9 @@ Partial Class SearchForm
     Friend WithEvents Label5 As Label
     Friend WithEvents RealEstateAgentIDComboBox As ComboBox
     Friend WithEvents CustomerIDComboBox As ComboBox
+    Friend WithEvents BIS422_33DataSet As BIS422_33DataSet
+    Friend WithEvents HshcustomerBindingSource As BindingSource
+    Friend WithEvents HshcustomerTableAdapter As BIS422_33DataSetTableAdapters.hshcustomerTableAdapter
+    Friend WithEvents HshrealestateagentBindingSource As BindingSource
+    Friend WithEvents HshrealestateagentTableAdapter As BIS422_33DataSetTableAdapters.hshrealestateagentTableAdapter
 End Class

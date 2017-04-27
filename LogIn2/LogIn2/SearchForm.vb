@@ -8,6 +8,10 @@
 
 
     Private Sub Retrieve_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'BIS422_33DataSet.hshrealestateagent' table. You can move, or remove it, as needed.
+        Me.HshrealestateagentTableAdapter.Fill(Me.BIS422_33DataSet.hshrealestateagent)
+        'TODO: This line of code loads data into the 'BIS422_33DataSet.hshcustomer' table. You can move, or remove it, as needed.
+        Me.HshcustomerTableAdapter.Fill(Me.BIS422_33DataSet.hshcustomer)
         DB.ExecuteQuery("SELECT PropertyID, PropertyStreetAddress, ZipCode, AskingPrice, NumberOfBedrooms, NumberOfBathrooms, TotalSquareFeet, YearBuilt FROM HSHProperty WHERE Sold = 'n' ORDER BY PropertyID")
         If DB.Exception <> String.Empty Then
             MessageBox.Show(DB.Exception)
