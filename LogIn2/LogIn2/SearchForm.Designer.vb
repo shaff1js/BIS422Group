@@ -38,7 +38,6 @@ Partial Class SearchForm
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.RealEstateAgentIDComboBox = New System.Windows.Forms.ComboBox()
         Me.CustomerIDComboBox = New System.Windows.Forms.ComboBox()
-        Me.ClearPurchaseButton = New System.Windows.Forms.Button()
         Me.PurchaseButton = New System.Windows.Forms.Button()
         Me.DateSoldMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
         Me.SalePriceMaskedTextBox = New System.Windows.Forms.MaskedTextBox()
@@ -183,7 +182,6 @@ Partial Class SearchForm
         '
         Me.GroupBox3.Controls.Add(Me.RealEstateAgentIDComboBox)
         Me.GroupBox3.Controls.Add(Me.CustomerIDComboBox)
-        Me.GroupBox3.Controls.Add(Me.ClearPurchaseButton)
         Me.GroupBox3.Controls.Add(Me.PurchaseButton)
         Me.GroupBox3.Controls.Add(Me.DateSoldMaskedTextBox)
         Me.GroupBox3.Controls.Add(Me.SalePriceMaskedTextBox)
@@ -219,15 +217,6 @@ Partial Class SearchForm
         Me.CustomerIDComboBox.Name = "CustomerIDComboBox"
         Me.CustomerIDComboBox.Size = New System.Drawing.Size(100, 21)
         Me.CustomerIDComboBox.TabIndex = 18
-        '
-        'ClearPurchaseButton
-        '
-        Me.ClearPurchaseButton.Location = New System.Drawing.Point(424, 90)
-        Me.ClearPurchaseButton.Name = "ClearPurchaseButton"
-        Me.ClearPurchaseButton.Size = New System.Drawing.Size(75, 23)
-        Me.ClearPurchaseButton.TabIndex = 17
-        Me.ClearPurchaseButton.Text = "Clear"
-        Me.ClearPurchaseButton.UseVisualStyleBackColor = True
         '
         'PurchaseButton
         '
@@ -360,7 +349,6 @@ Partial Class SearchForm
     Friend WithEvents askingPriceMaskedTextBox As MaskedTextBox
     Friend WithEvents SquareFeetMaskedTextBox As MaskedTextBox
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents ClearPurchaseButton As Button
     Friend WithEvents PurchaseButton As Button
     Friend WithEvents DateSoldMaskedTextBox As MaskedTextBox
     Friend WithEvents SalePriceMaskedTextBox As MaskedTextBox
